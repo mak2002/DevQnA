@@ -12,7 +12,6 @@ export default function AskQuestion() {
       content: questionDetails.details,
       authorId: "d7f1c709-4fea-4ab0-86a3-03bdfb357b49",
       postType: "QUESTION",
-      // details2: questionDetails.details2,
       tags: questionDetails.tags,
     }).then((res) => {
       console.log("res", res);

@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(() => {
     const fetchQuestions = async () => {
       // fetch questions from gun js 
-      const questions 
+      // const questions 
 
     };
 
