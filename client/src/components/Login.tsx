@@ -3,23 +3,29 @@ import {
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,
 } from "../utils/firebaseFile";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import stack_overflow_icon from "../stack_overflow_icon.png";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
-import { GrFacebook } from "react-icons/gr";
+import { loginInButtions } from "../utils/Data";
 
 const Login = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+
+  const renderLoginButtons = () => {
+    return loginInButtions.map((button) => {
+      return button.icon ? (
+        <button className={button.className} onClick={button.onClick}>
+          {button.icon}
+          {button.content}
+        </button>
+      ) : (
+        <button className={button.className} onClick={button.onClick}>
+          {button.content}
+        </button>
+      );
+    });
+  };
 
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-neutral-800">
@@ -32,18 +38,7 @@ const Login = () => {
         />
       </Link>
 
-      <button className="mt-3 flex w-3/4 items-center justify-center gap-2 rounded bg-slate-600 py-2 text-white sm:w-1/4">
-        <FcGoogle />
-        Log in with Google
-      </button>
-      <button className="mt-4 flex w-3/4 items-center justify-center gap-2 rounded bg-slate-400 py-2 text-white sm:w-1/4">
-        <FaGithub />
-        Log in with GitHub
-      </button>
-      <button className="mt-4 flex w-3/4 items-center justify-center gap-2 rounded bg-blue-800 py-2 text-white sm:w-1/4">
-        <GrFacebook />
-        Log in with Facebook
-      </button>
+      {renderLoginButtons()}
 
       <div className="mt-6 flex w-3/4 flex-col justify-center rounded-lg bg-neutral-700 p-4 sm:w-1/4">
         <label htmlFor="email" className="pb-2 text-left text-white">
@@ -52,7 +47,7 @@ const Login = () => {
         <input
           type="email"
           placeholder="Enter Email..."
-          className="mb-2 bg-zinc-800 p-1 text-black outline transition-all hover:outline-4 hover:outline-blue-600"
+          className="mb-2 bg-zinc-800 p-1 text-white outline transition-all hover:outline-4 hover:outline-blue-600"
           name="email"
           onChange={(e) => {
             setLoginEmail(e.target.value);
@@ -63,7 +58,7 @@ const Login = () => {
         </label>
         <input
           type="password"
-          className="mb-2 bg-zinc-800 p-1 text-black outline transition-all hover:outline-4 hover:outline-blue-600"
+          className="mb-2  bg-zinc-800 p-1 text-white outline transition-all hover:outline-4 hover:outline-blue-600"
           name="password"
           placeholder="Enter Password..."
           onChange={(e) => {

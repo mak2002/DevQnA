@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { isJSDocFunctionType } from "typescript";
+import { fetchSinglePost } from "../utils/fetchUtils";
 
 export default function QuestionsPage() {
   const { id }: any = useParams();
@@ -10,37 +12,12 @@ export default function QuestionsPage() {
   const [newAnswers, setNewAnswers] = React.useState<string[]>([]);
 
   useEffect(() => {
-    const fetchSinglePost = async () => {
-      const postData = await fetch(`http://localhost:3000/posts/${id}`);
-      const postJSON = await postData.json();
-      console.log("postJSON", postJSON);
-      setPostDetails(postJSON);
-    };
-
-    fetchSinglePost();
+    fetchSinglePost(id, setPostDetails);
   }, []);
 
   const showUserAnswers = (): any => {};
 
-  const submitAnswer = () => {
-    // var todos = Gun().get("todos");
-
-    // todos.get(id).on(function (data, key) {
-    if (answer === "") return;
-
-    var currentAnswers = Gun().get("todos").get(id).put("answers");
-    currentAnswers.set({ ans: answer });
-    console.log("current answer submitAnswer", answer);
-
-    currentAnswers.map().once(function (currAns, id) {
-      if (currAns.ans !== undefined) {
-        console.log("updated currentAnswers>>", currAns["ans"]);
-      }
-    });
-
-    setGivenAnswers([...givenAnswers, answer]);
-    console.log("given answers", givenAnswers);
-  };
+  const submitAnswer = () => {};
 
   return (
     <div className="h-screen bg-neutral-800 text-white">
@@ -54,7 +31,7 @@ export default function QuestionsPage() {
       </div>
 
       <div>
-        <h1 className="no-wrap pb-2 px-4 text-start text-xl">
+        <h1 className="no-wrap px-4 pb-2 text-start text-xl">
           {postDetails["title"]}
         </h1>
         <hr />

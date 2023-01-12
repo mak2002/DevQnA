@@ -1,12 +1,11 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
-import About from "./components/About";
 import AskQuestion from "./components/AskQuestionBar";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import QuestionPage from "./components/QuestionPage";
-import RegisterUser from "./components/RegisterUser";
+import Signup from "./components/Signup";
 import { BaseRoute, LayoutRoute } from "./utils/Routes";
 
 function App() {
@@ -19,6 +18,7 @@ function App() {
 
         <Route element={<BaseRoute />}>
           <Route path="/signin" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/askquestion" element={<AskQuestion />} />
           <Route path="/questions/:id" element={<QuestionPage />} />
         </Route>

@@ -1,13 +1,5 @@
 import React, { useEffect } from "react";
-import stack_overflow_icon from "../stack_overflow_icon.png";
-import { MdMenu } from "react-icons/md";
-import { FaUserCircle } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
-import AskQuestion from "./AskQuestionBar";
-import Leftbar from "./Leftbar";
-import Navbar from "./Navbar";
 import Rightbar from "./Rightbar";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -15,14 +7,23 @@ export default function Home() {
   const [questions, setQuestions] = React.useState<any[]>([]);
 
   useEffect(() => {
-    const fetchQuestions = async () => {
-      // fetch questions from gun js 
-      // const questions 
-
-    };
+    const fetchQuestions = async () => {};
 
     fetchQuestions();
   }, []);
+
+  const renderSortingButtons = () => {
+    return sortingButtons.map((buttonName) => {
+      return (
+        <button
+          key={buttonName}
+          className="border-collapse border border-gray-400 p-3 text-white transition-all duration-100 hover:bg-slate-600"
+        >
+          {buttonName}
+        </button>
+      );
+    });
+  };
 
   function showQuestions(): any {
     console.log("all questions", questions);
@@ -64,27 +65,10 @@ export default function Home() {
         </div>
 
         <div className="relative mx-4 mt-6 mb-4 flex justify-end">
-          {sortingButtons.map((buttonName) => {
-            return (
-              <button
-                key={buttonName}
-                className="border-collapse border border-gray-400 p-3 text-white transition-all duration-100 hover:bg-slate-600"
-              >
-                {buttonName}
-              </button>
-            );
-          })}
+          {renderSortingButtons()}
         </div>
 
         <div>{showQuestions()}</div>
-        {/* <InfiniteScroll
-          dataLength={items.length} //This is important field to render the next data
-          next={() => }
-          hasMore={true}
-          loader={<h4>Loading...</h4>}
-        >
-          {showQuestions()}
-        </InfiniteScroll> */}
       </div>
       <Rightbar />
     </React.Fragment>
