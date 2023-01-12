@@ -8,15 +8,15 @@ export default (sequelize) => {
       // The following specification of the 'id' attribute could be omitted
       // since it is the default.
       id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         primaryKey: true,
-        type: DataTypes.STRING,
       },
       postType: {
         allowNull: false,
         type: DataTypes.STRING,
       },
-
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
@@ -28,12 +28,13 @@ export default (sequelize) => {
       upvotes: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        defaultValue: 0,
       },
       downvotes: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        defaultValue: 0,
       },
-
       title: {
         allowNull: false,
         type: DataTypes.STRING,

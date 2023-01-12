@@ -22,7 +22,7 @@ export default function Leftbar() {
   ];
   return (
     <React.Fragment>
-      <div className="h-screen bg-neutral-800 w-2/12 hidden sm:block border-r-2 border-gray-600">
+      <div className="bg-neutral-800 w-2/12 hidden sm:block border-r-2 border-gray-600">
         <Link to="/" className="relative block pl-2 py-2 top-4 text-left w-full text-sm text-white active:bg-gray-700 active:border-r-4 active:font-bold border-cyan-600">
           Home
         </Link>

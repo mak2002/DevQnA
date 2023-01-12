@@ -13,6 +13,7 @@ export default function AskQuestion() {
       authorId: "d7f1c709-4fea-4ab0-86a3-03bdfb357b49",
       postType: "QUESTION",
       tags: questionDetails.tags,
+      userId: '9371f314-1c93-11ec-9621-0242ac130002'
     }).then((res) => {
       console.log("res", res);
     });

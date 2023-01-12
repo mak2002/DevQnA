@@ -9,13 +9,13 @@ import Leftbar from "./Leftbar";
 
 export default function Navbar() {
   return (
-    <React.Fragment>
-      <div className="w-full bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-700 h-1">
+    <>
+      <div className="fixed h-1 w-full bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-700">
         &nbsp;
       </div>
       <div className="flex items-center justify-between bg-stone-800">
         <div className="flex w-full items-center px-2">
-          <MdMenu size={30} className="text-white sm:hidden" /> 
+          <MdMenu size={30} className="text-white sm:hidden" />
 
           <Link to="/" className="flex items-center">
             <img
@@ -39,14 +39,24 @@ export default function Navbar() {
           />
         </div>
 
-        {/* // talk with people on twitter about 
-      // internship at microsoft and lfx mentorship */}
+        <div className="mx-2 flex w-full items-center gap-4 md:w-4/12">
+          {/* make a link to route signIn */}
 
-        <div className="flex items-center gap-4 px-2">
-          <FaSearch size={30} className="text-white sm:hidden" />
-          <FaUserCircle size={35} className="text-white" />
+          <Link
+            to="/signin"
+            className="my-3 w-full rounded bg-slate-700 py-1 text-sm sm:w-4/12"
+          >
+            Log In
+          </Link>
+
+          <Link
+            to="signUp"
+            className="my-3 w-full rounded bg-blue-500 py-1 text-sm font-bold text-white hover:bg-indigo-700 sm:w-4/12"
+          >
+            Sign Up
+          </Link>
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 }

@@ -24,9 +24,8 @@ export const LayoutRoute: FC<PropsWithChildren<Props>> = ({
         <Navbar />
         <div className="content flex w-full">
           <Leftbar />
-          <Outlet />
+            <Outlet />
         </div>
-
       </div>
     </React.Fragment>
   );
