@@ -13,7 +13,7 @@ export default function Navbar() {
       <div className="fixed h-1 w-full bg-gradient-to-r from-amber-600 via-amber-700 to-yellow-700">
         &nbsp;
       </div>
-      <div className="flex items-center justify-between bg-stone-800">
+      <div className="flex items-center justify-between bg-neutral-900 shadow-2xl">
         <div className="flex w-full items-center px-2">
           <MdMenu size={30} className="text-white sm:hidden" />
 
@@ -39,12 +39,10 @@ export default function Navbar() {
           />
         </div>
 
-        <div className="mx-2 flex w-full items-center gap-4 md:w-4/12">
-          {/* make a link to route signIn */}
-
+        <div className="ml-24 mx-2 shadow-2xl flex w-full items-center gap-4 md:w-4/12">
           <Link
             to="/signin"
-            className="my-3 w-full rounded bg-slate-700 py-1 text-sm sm:w-4/12"
+            className="my-3 w-full rounded bg-slate-700 py-1 text-white text-sm sm:w-4/12"
           >
             Log In
           </Link>
