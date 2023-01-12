@@ -70,7 +70,14 @@ const Login = () => {
             setLoginPassword(e.target.value);
           }}
         ></input>
-        <button className="mt-2 w-full bg-blue-600 py-2">Log in</button>
+        <button
+          className="mt-2 w-full bg-blue-600 py-2"
+          onClick={() => {
+            signInWithEmailAndPassword(loginEmail, loginPassword);
+          }}
+        >
+          Log in
+        </button>
       </div>
 
       <div className="mt-2 flex gap-2">
