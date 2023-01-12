@@ -3,16 +3,16 @@ import {
   signInWithEmailAndPassword,
   registerWithEmailAndPassword,
 } from "../utils/firebaseFile";
-import React, { useState } from "react";
+import React, { ReactComponentElement, ReactElement, useState } from "react";
 import { Link } from "react-router-dom";
 import stack_overflow_icon from "../stack_overflow_icon.png";
 import { loginInButtions } from "../utils/Data";
 
 const Login = () => {
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState<String>("");
+  const [loginPassword, setLoginPassword] = useState<String>("");
 
-  const renderLoginButtons = () => {
+  const renderLoginButtons = ():any => {
     return loginInButtions.map((button) => {
       return button.icon ? (
         <button className={button.className} onClick={button.onClick}>

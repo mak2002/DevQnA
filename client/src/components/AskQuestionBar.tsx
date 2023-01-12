@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import React, { ReactComponentElement, ReactFragment, ReactHTMLElement, useState } from "react";
 import { questionForm } from "../utils/Data";
 import { putNewQuestions } from "../utils/fetchUtils";
+
+export type QuestionDetails = {
+  title: string;
+  details: string;
+  details2: string;
+  tags: string[];
+};
 
 export default function AskQuestion() {
   const initialValues = {
@@ -10,7 +17,7 @@ export default function AskQuestion() {
     tags: [""],
   };
 
-  const [questionDetails, setQuestionDetails] = useState(initialValues);
+  const [questionDetails, setQuestionDetails] = useState<QuestionDetails>(initialValues);
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
@@ -25,7 +32,7 @@ export default function AskQuestion() {
     putNewQuestions(questionDetails, setQuestionDetails);
   };
 
-  const renderQuestionForm = () => {
+  const renderQuestionForm = ():any => {
     return questionForm.map((item) => {
       return (
         <div className="m-5 flex w-4/6 flex-col items-start justify-start bg-zinc-800 p-6">

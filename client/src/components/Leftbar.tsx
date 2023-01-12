@@ -1,47 +1,36 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { leftSidebarContent } from "../utils/Data";
 
 export default function Leftbar() {
-  const leftSidebarContent = [
-    {
-      title: "Questions",
-      link: "/questions",
-    },
-    {
-      title: "Tags",
-      link: "/tags",
-    },
-    {
-      title: "Users",
-      link: "/users",
-    },
-    {
-      title: "Companies",
-      link: "/companies",
-    },
-  ];
   return (
     <React.Fragment>
-      <div className="bg-neutral-800 w-2/12 hidden sm:block border-r-2 border-gray-600">
-        <Link to="/" className="relative block pl-2 py-2 top-4 text-left w-full text-sm text-white active:bg-gray-700 active:border-r-4 active:font-bold border-cyan-600">
+      <div className="hidden w-2/12 border-r-2 border-gray-600 bg-neutral-800 sm:block">
+        <Link
+          to="/"
+          className="relative top-4 block w-full border-cyan-600 py-2 pl-2 text-left text-sm text-white active:border-r-4 active:bg-gray-700 active:font-bold"
+        >
           Home
         </Link>
 
-          <p className="relative top-8 text-left px-2 py-2 text-white uppercase text-xs">
-            Public
-          </p>
-          <ul className="text-left relative top-8 w-full">
-            {leftSidebarContent.map((item, index) => (
-              <li
-                key={index}
-                className="w-full  active:bg-gray-700 active:border-r-4 active:font-bold border-cyan-600 py-1 px-4"
+        <p className="relative top-8 px-2 py-2 text-left text-xs uppercase text-white">
+          Public
+        </p>
+        <ul className="relative top-8 w-full text-left">
+          {leftSidebarContent.map((item, index) => (
+            <li
+              key={index}
+              className="w-full  border-cyan-600 py-1 px-4 active:border-r-4 active:bg-gray-700 active:font-bold"
+            >
+              <Link
+                className="text-sm text-gray-300 hover:text-white"
+                to={item.link}
               >
-                <Link className="text-sm hover:text-white text-gray-300" to={item.link}>
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
+                {item.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </React.Fragment>
   );

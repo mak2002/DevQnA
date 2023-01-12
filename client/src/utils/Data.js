@@ -66,3 +66,22 @@ export const loginInButtions = [
       name: "tags",
     },
   ];
+
+  export const leftSidebarContent = [
+    {
+      title: "Questions",
+      link: "/questions",
+    },
+    {
+      title: "Tags",
+      link: "/tags",
+    },
+    {
+      title: "Users",
+      link: "/users",
+    },
+    {
+      title: "Companies",
+      link: "/companies",
+    },
+  ];

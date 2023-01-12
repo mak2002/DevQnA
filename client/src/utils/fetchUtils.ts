@@ -1,14 +1,14 @@
 import Axios from "axios";
+import { QuestionDetails } from "../components/AskQuestionBar";
 
-export const fetchSinglePost = async (id, setPostDetails) => {
+export const fetchSinglePost = async (id:string, setPostDetails:Function) => {
   const postData = await fetch(`http://localhost:3000/posts/${id}`);
   const postJSON = await postData.json();
   console.log("postJSON", postJSON);
   setPostDetails(postJSON);
 };
 
-export function putNewQuestions(questionDetails, setQuestionDetails) {
-  console.log("putNewQuestions", questionDetails, questionDetails.tags);
+export function putNewQuestions(questionDetails: QuestionDetails, setQuestionDetails:Function) {
   Axios.post("/postQuestion", {
     title: questionDetails.title,
     content: questionDetails.details,

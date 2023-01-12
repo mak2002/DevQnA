@@ -3,7 +3,7 @@ import Rightbar from "./Rightbar";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  const sortingButtons = ["Bountied", "Hot", "Week", "Month"];
+  const sortingButtons:string[] = ["Bountied", "Hot", "Week", "Month"];
   const [questions, setQuestions] = React.useState<any[]>([]);
 
   useEffect(() => {
