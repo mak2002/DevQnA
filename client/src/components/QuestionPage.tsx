@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { isJSDocFunctionType } from "typescript";
-import { fetchSinglePost } from "../utils/fetchUtils";
+import { fetchSinglePost } from "../utils/dataRequests";
 
 export default function QuestionsPage() {
   const { id }: any = useParams();

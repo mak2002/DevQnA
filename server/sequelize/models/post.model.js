@@ -43,10 +43,6 @@ export default (sequelize) => {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      authorId: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
       tags: {
         allowNull: false,
         type: DataTypes.STRING,

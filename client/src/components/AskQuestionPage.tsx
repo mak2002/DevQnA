@@ -1,6 +1,13 @@
-import React, { ReactComponentElement, ReactFragment, ReactHTMLElement, useState } from "react";
+import React, {
+  ReactComponentElement,
+  ReactFragment,
+  ReactHTMLElement,
+  useState,
+} from "react";
 import { questionForm } from "../utils/Data";
-import { putNewQuestions } from "../utils/fetchUtils";
+import { putNewQuestions } from "../utils/dataRequests";
+import firebase from "firebase/compat/app";
+import "firebase/compat/storage";
 
 export type QuestionDetails = {
   title: string;
@@ -17,7 +24,8 @@ export default function AskQuestion() {
     tags: [""],
   };
 
-  const [questionDetails, setQuestionDetails] = useState<QuestionDetails>(initialValues);
+  const [questionDetails, setQuestionDetails] =
+    useState<QuestionDetails>(initialValues);
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
@@ -29,10 +37,15 @@ export default function AskQuestion() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    putNewQuestions(questionDetails, setQuestionDetails);
+    const email = firebase.auth().currentUser?.email;
+    if (!email) {
+      alert("Please login to ask a question");
+      return;
+    }
+    putNewQuestions(questionDetails, email);
   };
 
-  const renderQuestionForm = ():any => {
+  const renderQuestionForm = (): any => {
     return questionForm.map((item) => {
       return (
         <div className="m-5 flex w-4/6 flex-col items-start justify-start bg-zinc-800 p-6">

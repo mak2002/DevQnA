@@ -4,15 +4,16 @@ import {
   registerWithEmailAndPassword,
 } from "../utils/firebaseFile";
 import React, { ReactComponentElement, ReactElement, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import stack_overflow_icon from "../stack_overflow_icon.png";
 import { loginInButtions } from "../utils/Data";
+import firebase from "firebase/compat/app";
 
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState<String>("");
   const [loginPassword, setLoginPassword] = useState<String>("");
 
-  const renderLoginButtons = ():any => {
+  const renderLoginButtons = (): any => {
     return loginInButtions.map((button) => {
       return button.icon ? (
         <button className={button.className} onClick={button.onClick}>
@@ -29,6 +30,7 @@ const Login = () => {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-neutral-800">
+      {firebase.auth().currentUser && <Navigate to="/" replace={true} />}
       <Link to="/" className="">
         <img
           src={stack_overflow_icon}

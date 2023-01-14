@@ -5,11 +5,7 @@ export default (sequelize) => {
   sequelize.define("user", {
     // The following specification of the 'id' attribute could be omitted
     // since it is the default.
-    id: {
-      allowNull: false,
-      primaryKey: true,
-      type: DataTypes.STRING,
-    },
+
     username: {
       allowNull: false,
       type: DataTypes.STRING,
@@ -24,17 +20,18 @@ export default (sequelize) => {
       allowNull: false,
       type: DataTypes.STRING,
       unique: true,
+      primaryKey: true,
     },
     about: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.STRING,
     },
     profileImage: {
-      allowNull: false,
+      allowNull: true,
       type: DataTypes.STRING,
     },
     age: {
-      allownull: false,
+      allownull: true,
       type: DataTypes.INTEGER,
     },
   });

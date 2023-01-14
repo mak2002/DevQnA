@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import AskQuestion from "./components/AskQuestionBar";
+import AskQuestion from "./components/AskQuestionPage";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import QuestionPage from "./components/QuestionPage";

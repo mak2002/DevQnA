@@ -91,16 +91,29 @@ app.get("/getAllPosts", async (req, res) => {
 // post a question
 app.post("/postQuestion", async (req, res) => {
   try {
-    const { title, content, authorId, postType, tags, userId } = req.body;
+    const { title, content, postType, tags, userId } = req.body;
     const newPost = await sequelize.models.post.create({
       postType: postType,
-      title,
-      content,
-      authorId,
-      tags,
-      userId
+      title: title,
+      content: content,
+      tags: tags,
+      userEmail: userId,
     });
     res.send(newPost);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// put new user
+app.post("/putNewUser", async (req, res) => {
+  try {
+    const { username, email } = req.body;
+    const newUser = await sequelize.models.user.create({
+      username,
+      email,
+    });
+    res.send(newUser);
   } catch (err) {
     console.log(err);
   }

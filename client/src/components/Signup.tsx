@@ -14,10 +14,6 @@ import { FaGithub } from "react-icons/fa";
 import { GrFacebook } from "react-icons/gr";
 
 const Signup = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 

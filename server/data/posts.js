@@ -15,7 +15,7 @@ export default [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed.",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed.",
-    authorId: "f1bdf45e-1b1c-11ec-9621-0242ac130002",
+    userId: "f1bdf45e-1b1c-11ec-9621-0242ac130002",
     tags: "c",
   },
 
@@ -35,7 +35,7 @@ export default [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed.",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed.",
-    authorId: "9371f314-1c93-11ec-9621-0242ac130002",
+    userId: "9371f314-1c93-11ec-9621-0242ac130002",
     tags: "javascript",
   },
 ];
