@@ -17,4 +17,16 @@ type QuestionForm = {
   name: string;
 }[];
 
-export type { LeftSidebarContent, LoginInButtions, QuestionForm };
+type QuestionDetails = {
+  title: string;
+  details: string;
+  details2: string;
+  tags: string[];
+};
+
+export type {
+  LeftSidebarContent,
+  LoginInButtions,
+  QuestionForm,
+  QuestionDetails,
+};

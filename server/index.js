@@ -37,8 +37,25 @@ for (const modelDefiner of modelDefiners) {
 // We execute any extra setup after the models are defined, such as adding associations.
 applyExtraSetup(sequelize);
 
+
+
 await sequelize.sync({ force: true });
 // console.log("All models were synchronized successfully.");
+
+sequelize
+  .query(
+    `ALTER TABLE post 
+  ALTER COLUMN details2 TYPE varchar(3000),
+  ALTER COLUMN content TYPE varchar(3000)`
+  )
+  .then(() => {
+    console.log(
+      ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>Column size changed successfully!"
+    );
+  })
+  .catch((err) => {
+    console.error("Error changing column size: ", err);
+  });
 
 // seed data for users and posts from data folder
 await sequelize.models.user.bulkCreate(users);
@@ -88,14 +105,32 @@ app.get("/getAllPosts", async (req, res) => {
   }
 });
 
+// get post by id
+app.get("/posts/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const post = await sequelize.models.post.findOne({
+      where: {
+        id: id,
+      },
+    });
+    console.log(">><<>>>>>>>", post);
+
+    res.send(post);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 // post a question
 app.post("/postQuestion", async (req, res) => {
   try {
-    const { title, content, postType, tags, userId } = req.body;
+    const { title, content, postType, tags, userId, details2 } = req.body;
     const newPost = await sequelize.models.post.create({
       postType: postType,
       title: title,
       content: content,
+      details2: details2,
       tags: tags,
       userEmail: userId,
     });
@@ -114,6 +149,20 @@ app.post("/putNewUser", async (req, res) => {
       email,
     });
     res.send(newUser);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+// get all questions
+app.get("/getAllQuestions", async (req, res) => {
+  try {
+    const questions = await sequelize.models.post.findAll({
+      where: {
+        postType: "QUESTION",
+      },
+    });
+    res.send(questions);
   } catch (err) {
     console.log(err);
   }

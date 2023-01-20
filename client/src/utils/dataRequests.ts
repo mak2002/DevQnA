@@ -1,11 +1,15 @@
 import Axios from "axios";
-import { QuestionDetails } from "../components/AskQuestionPage";
+import { QuestionDetails} from "./Types";
 
 export const fetchSinglePost = async (id: string, setPostDetails: Function) => {
-  const postData = await fetch(`http://localhost:3000/posts/${id}`);
-  const postJSON = await postData.json();
-  console.log("postJSON", postJSON);
-  setPostDetails(postJSON);
+  try {
+    const postData = await fetch(`/posts/${id}`);
+    const postJSON = await postData.json();
+    console.log("postJSON", postJSON);
+    setPostDetails(postJSON);
+  } catch (err) {
+    console.log("err", err);
+  }
 };
 
 export function putNewQuestions(
@@ -18,6 +22,7 @@ export function putNewQuestions(
     postType: "QUESTION",
     tags: questionDetails.tags,
     userId: userEmail,
+    details2: questionDetails.details2,
   }).then((res) => {
     console.log("res", res);
   });
@@ -32,3 +37,16 @@ export function putNewUser(user: string, email: string) {
     console.log("res", res);
   });
 }
+
+// get all questions
+export const fetchAllQuestions = async (setQuestions: Function) => {
+  try {
+    const questionsData = await fetch("/getAllQuestions");
+    console.log("questionsData", questionsData);
+    const questionsJSON = await questionsData.json();
+    console.log("questionsJSON", questionsJSON);
+    setQuestions(questionsJSON);
+  } catch (err) {
+    console.log("err", err);
+  }
+};

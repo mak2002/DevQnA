@@ -47,13 +47,6 @@ export const questionForm: QuestionForm = [
     name: "title",
   },
   {
-    title: "What are the details of your problem?",
-    description:
-      "Introduce the problem and expand on what you put in the title. Minimum 20 characters.",
-    inputWidth: "h-40 w-full",
-    name: "details",
-  },
-  {
     title: "What did you try and what were you expecting?",
     description:
       "Describe what you tried, what you expected to happen, and what actually resulted. Minimum 20 characters.",

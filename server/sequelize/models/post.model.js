@@ -43,9 +43,18 @@ export default (sequelize) => {
         allowNull: false,
         type: DataTypes.STRING,
       },
+      details2: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
       tags: {
         allowNull: false,
         type: DataTypes.STRING,
+      },
+      views: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
       },
     },
     {
