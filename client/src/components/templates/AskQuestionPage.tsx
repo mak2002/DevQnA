@@ -12,14 +12,13 @@ import TinyMCE from "../atoms/TinyMCE";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
 import { Heading } from "../atoms/Heading";
-import AskQuestionForm, { FormFields } from "../organisms/AskQuestionForm";
+import AskQuestionForm from "../organisms/AskQuestionForm";
 import { QuestionDetails } from "../../utils/Types";
 
 export default function AskQuestion() {
   const [questionDetails, setQuestionDetails] = useState<QuestionDetails>({
     title: "",
     details: "",
-    details2: "",
     tags: [""],
   });
 
@@ -28,6 +27,14 @@ export default function AskQuestion() {
     setQuestionDetails({
       ...questionDetails,
       [name]: value,
+    });
+    console.log("questionDetails>>>>", questionDetails);
+  };
+
+  const setContent = (content: any) => {
+    setQuestionDetails({
+      ...questionDetails,
+      details: content,
     });
   };
 
@@ -38,6 +45,7 @@ export default function AskQuestion() {
       alert("Please login to ask a question");
       return;
     }
+    console.log("questionDetails>>>>", questionDetails);
     putNewQuestions(questionDetails, email);
   };
 
@@ -49,7 +57,11 @@ export default function AskQuestion() {
           className="py-5 pl-5 text-left font-bold text-white"
         />
 
-        <AskQuestionForm handleInputChange={handleInputChange} />
+        <AskQuestionForm
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
+          setContent={setContent}
+        />
       </div>
     </React.Fragment>
   );

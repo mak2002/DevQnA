@@ -1,18 +1,20 @@
 import Axios from "axios";
 import { QuestionDetails} from "./Types";
 
-export const fetchSinglePost = async (id: string, setPostDetails: Function) => {
+export const fetchSinglePost = async (id: string, setPostDetails: Function, setLoading: Function) => {
   try {
+    setLoading(true);
     const postData = await fetch(`/posts/${id}`);
     const postJSON = await postData.json();
     console.log("postJSON", postJSON);
     setPostDetails(postJSON);
+    setLoading(false);
   } catch (err) {
     console.log("err", err);
   }
 };
 
-export function putNewQuestions(
+export function putNewQuestions(   
   questionDetails: QuestionDetails,
   userEmail: string
 ) {
@@ -22,7 +24,6 @@ export function putNewQuestions(
     postType: "QUESTION",
     tags: questionDetails.tags,
     userId: userEmail,
-    details2: questionDetails.details2,
   }).then((res) => {
     console.log("res", res);
   });

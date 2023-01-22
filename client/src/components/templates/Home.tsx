@@ -8,13 +8,16 @@ import AllQuestions from "../organisms/AllQuestions";
 
 export default function Home() {
   const [questions, setQuestions] = React.useState<any[]>([]);
+  const [loading, setLoading] = React.useState<boolean>(true);
 
   useEffect(() => {
     const fetchAllQuestions = async (setQuestions: Function) => {
       try {
+        setLoading(true);
         const questionsData = await fetch("/getAllQuestions");
         const questionsJSON = await questionsData.json();
         setQuestions(questionsJSON);
+        setLoading(false);
       } catch (err) {
         console.log("err", err);
       }
@@ -40,7 +43,7 @@ export default function Home() {
           <SortingButtons className="border-collapse border border-gray-400 p-3 text-white transition-all duration-100 hover:bg-slate-600" />
         </div>
 
-        <AllQuestions questions={questions} />
+        <AllQuestions questions={questions} isLoading={loading}/>
       </div>
       <Rightbar />
     </>

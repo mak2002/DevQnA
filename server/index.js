@@ -125,12 +125,11 @@ app.get("/posts/:id", async (req, res) => {
 // post a question
 app.post("/postQuestion", async (req, res) => {
   try {
-    const { title, content, postType, tags, userId, details2 } = req.body;
+    const { title, content, postType, tags, userId } = req.body;
     const newPost = await sequelize.models.post.create({
       postType: postType,
       title: title,
       content: content,
-      details2: details2,
       tags: tags,
       userEmail: userId,
     });

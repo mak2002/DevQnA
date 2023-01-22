@@ -51,7 +51,7 @@ export const questionForm: QuestionForm = [
     description:
       "Describe what you tried, what you expected to happen, and what actually resulted. Minimum 20 characters.",
     inputWidth: "h-20 w-full pl-2",
-    name: "details2",
+    name: "details",
   },
   {
     title: "Tags",

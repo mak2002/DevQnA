@@ -13,8 +13,9 @@ import Button from "./../atoms/Button";
 import Input from "./../atoms/Input";
 import { Heading } from "./../atoms/Heading";
 
-export const FormFields = (
-  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+const FormFields = (
+  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  setContent: Function
 ) => {
   return questionForm.map((item) => {
     return (
@@ -36,21 +37,26 @@ export const FormFields = (
             key={item.name}
           />
         ) : (
-          <TinyMCE height={300} />
+          <TinyMCE height={300} setContent={setContent} />
         )}
       </div>
     );
   });
 };
 
-export default function AskQuestionForm({ handleInputChange }: any) {
+export default function AskQuestionForm({
+  handleInputChange,
+  handleSubmit,
+  setContent,
+}: any) {
   return (
     <>
-      {FormFields(handleInputChange)}
+      {FormFields(handleInputChange, setContent)}
       <Button
         type="submit"
-        className="w-1/6 bg-zinc-400 text-white"
+        className="rounded bg-blue-500 p-2 text-white"
         text="Submit"
+        onClick={handleSubmit}
       />
     </>
   );

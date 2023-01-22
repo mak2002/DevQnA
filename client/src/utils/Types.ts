@@ -20,7 +20,6 @@ type QuestionForm = {
 type QuestionDetails = {
   title: string;
   details: string;
-  details2: string;
   tags: string[];
 };
 

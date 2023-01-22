@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 // import 'tinymce/plugins/markdown';
 
-export default function TinyMCE({ height }) {
+export default function TinyMCE({ height, setContent }) {
   const editorRef = useRef(null);
   const log = () => {
     if (editorRef.current) {
@@ -10,9 +10,10 @@ export default function TinyMCE({ height }) {
     }
   };
 
-  const [content, setContent] = useState("Enter text here...");
+  const [content, setContentState] = useState("Enter text here...");
 
   const handleEditorChange = (content, editor) => {
+    setContentState(content);
     setContent(content);
     console.log("Content was updated:", content);
   };
@@ -22,7 +23,7 @@ export default function TinyMCE({ height }) {
       <Editor
         tinymceScriptSrc={process.env.PUBLIC_URL + "/tinymce/tinymce.min.js"}
         onInit={(evt, editor) => (editorRef.current = editor)}
-        initialValue={content}
+        initialValue={"Enter details here..."}
         init={{
           height: height,
           menubar: false,
