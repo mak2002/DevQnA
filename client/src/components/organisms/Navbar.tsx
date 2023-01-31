@@ -1,14 +1,9 @@
-import stack_overflow_icon from "../stack_overflow_icon.png";
-import { MdMenu } from "react-icons/md";
-import { FaSearch } from "react-icons/fa";
-import { Link, redirect } from "react-router-dom";
 import LoginAndSignUp from "../molecules/LoginAndSignUpButton";
 import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
 import React, { useState } from "react";
 import LoggedIn from "../molecules/LoggedIn";
 import { Navigate } from "react-router-dom";
-import { LinkButton } from "../atoms/LinkButton";
 import { SearchBar } from "../molecules/SearchBar";
 import LogoTitle from "../molecules/LogoTitle";
 import { GradientLine } from "../atoms/GradientLine";

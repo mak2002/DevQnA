@@ -1,8 +1,6 @@
 import React, { Component, FC, PropsWithChildren } from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
-import Leftbar from "../organisms/Leftbar";
+import { Outlet } from "react-router-dom";
 import Navbar from "../organisms/Navbar";
-import Rightbar from "../organisms/Rightbar";
 
 interface Props {
   title?: string;

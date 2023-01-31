@@ -1,20 +1,28 @@
+import axios from "axios";
 import Axios from "axios";
-import { QuestionDetails} from "./Types";
+import { QuestionDetails } from "./Types";
 
-export const fetchSinglePost = async (id: string, setPostDetails: Function, setLoading: Function) => {
-  try {
-    setLoading(true);
-    const postData = await fetch(`/posts/${id}`);
-    const postJSON = await postData.json();
-    console.log("postJSON", postJSON);
-    setPostDetails(postJSON);
-    setLoading(false);
-  } catch (err) {
-    console.log("err", err);
-  }
-};
+export const axiosInstance = axios.create({
+  baseURL: "http://localhost:3000/api",
+});
 
-export function putNewQuestions(   
+// export const fetchSinglePost = async (
+//   id: string,
+//   setPostDetails: Function,
+//   setLoading: Function
+// ) => {
+//   try {
+//     setLoading(true);
+//     const postData = await fetch(`/posts/${id}`);
+//     const postJSON = await postData.json();
+//     setPostDetails(postJSON);
+//     setLoading(false);
+//   } catch (err) {
+//     console.log("err", err);
+//   }
+// };
+
+export function putNewQuestions(
   questionDetails: QuestionDetails,
   userEmail: string
 ) {
@@ -39,15 +47,4 @@ export function putNewUser(user: string, email: string) {
   });
 }
 
-// get all questions
-export const fetchAllQuestions = async (setQuestions: Function) => {
-  try {
-    const questionsData = await fetch("/getAllQuestions");
-    console.log("questionsData", questionsData);
-    const questionsJSON = await questionsData.json();
-    console.log("questionsJSON", questionsJSON);
-    setQuestions(questionsJSON);
-  } catch (err) {
-    console.log("err", err);
-  }
-};
+

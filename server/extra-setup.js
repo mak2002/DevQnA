@@ -3,5 +3,3 @@ export default function applyExtraSetup(sequelize) {
 
   user.hasMany(post);
 }
-
-// export default { applyExtraSetup };

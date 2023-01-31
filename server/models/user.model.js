@@ -31,7 +31,7 @@ export default (sequelize) => {
       type: DataTypes.STRING,
     },
     age: {
-      allownull: true,
+      allowNull: true,
       type: DataTypes.INTEGER,
     },
   });

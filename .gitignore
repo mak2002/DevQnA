@@ -2,3 +2,4 @@ node_modules/
 client/src/utils/firebaseFile.js
 server/.env
 client/public/tinymce/
+server/config/.env

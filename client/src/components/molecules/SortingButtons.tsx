@@ -3,7 +3,6 @@ import Button from "../atoms/Button";
 const sortingButtons: string[] = ["Bountied", "Hot", "Week", "Month"];
 
 const renderSortingButtons = (className: string) => {
-  console.log("className", className);
   return sortingButtons.map((buttonName) => {
     return (
       <Button key={buttonName} className={className}>

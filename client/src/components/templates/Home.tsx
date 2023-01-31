@@ -1,30 +1,15 @@
 import React, { useEffect } from "react";
 import Rightbar from "../organisms/Rightbar";
-import { Link } from "react-router-dom";
-import { timeAgo } from "../../utils/generalUtils";
 import { LinkButton } from "../atoms/LinkButton";
 import SortingButtons from "../molecules/SortingButtons";
 import AllQuestions from "../organisms/AllQuestions";
+import axios from "axios";
+import { useQuery, useQueryClient } from "react-query";
+import { _api } from "../../apis/api";
+import { fetchAllPosts } from "../../apis/Posts";
 
 export default function Home() {
-  const [questions, setQuestions] = React.useState<any[]>([]);
-  const [loading, setLoading] = React.useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchAllQuestions = async (setQuestions: Function) => {
-      try {
-        setLoading(true);
-        const questionsData = await fetch("/getAllQuestions");
-        const questionsJSON = await questionsData.json();
-        setQuestions(questionsJSON);
-        setLoading(false);
-      } catch (err) {
-        console.log("err", err);
-      }
-    };
-
-    fetchAllQuestions(setQuestions);
-  }, []);
+  const questions = useQuery("posts", fetchAllPosts);
 
   return (
     <>
@@ -43,7 +28,10 @@ export default function Home() {
           <SortingButtons className="border-collapse border border-gray-400 p-3 text-white transition-all duration-100 hover:bg-slate-600" />
         </div>
 
-        <AllQuestions questions={questions} isLoading={loading}/>
+        <AllQuestions
+          questions={questions.data}
+          isLoading={questions.isLoading}
+        />
       </div>
       <Rightbar />
     </>
