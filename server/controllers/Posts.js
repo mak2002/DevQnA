@@ -14,6 +14,16 @@ export const getQuestions = async (req, res) => {
   }
 };
 
+export const getAllPosts = async (req, res) => {
+  try {
+    const posts = await Sequelize.models.post.findAll();
+    console.log("posts", posts);
+    res.send(posts);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 // get a post by id
 export const getQuestionById = async (req, res) => {
   try {
@@ -40,6 +50,7 @@ export const postQuestion = async (req, res) => {
       tags: tags,
       userEmail: userId,
     });
+    console.log("newPost", newPost);
     res.send(newPost);
   } catch (err) {
     console.log(err);

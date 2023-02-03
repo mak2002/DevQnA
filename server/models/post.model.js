@@ -36,7 +36,7 @@ export default (sequelize) => {
         defaultValue: 0,
       },
       title: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING,
       },
       content: {
@@ -48,7 +48,7 @@ export default (sequelize) => {
         type: DataTypes.STRING,
       },
       tags: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.STRING,
       },
       views: {
