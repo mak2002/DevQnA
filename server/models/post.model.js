@@ -13,6 +13,10 @@ export default (sequelize) => {
         allowNull: false,
         primaryKey: true,
       },
+      userEmail: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
       postType: {
         allowNull: false,
         type: DataTypes.STRING,
@@ -55,6 +59,14 @@ export default (sequelize) => {
         allowNull: false,
         type: DataTypes.INTEGER,
         defaultValue: 0,
+      },
+      parentPostId: {
+        allowNull: true,
+        type: DataTypes.UUID,
+        references: {
+          model: "post",
+          key: "id",
+        },
       },
     },
     {

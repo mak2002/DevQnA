@@ -6,21 +6,7 @@ export const axiosInstance = axios.create({
   baseURL: "http://localhost:3000/api",
 });
 
-// export const fetchSinglePost = async (
-//   id: string,
-//   setPostDetails: Function,
-//   setLoading: Function
-// ) => {
-//   try {
-//     setLoading(true);
-//     const postData = await fetch(`/posts/${id}`);
-//     const postJSON = await postData.json();
-//     setPostDetails(postJSON);
-//     setLoading(false);
-//   } catch (err) {
-//     console.log("err", err);
-//   }
-// };
+
 
 export function putNewQuestions(
   questionDetails: QuestionDetails,

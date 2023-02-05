@@ -14,11 +14,17 @@ export const getQuestions = async (req, res) => {
   }
 };
 
-export const getAllPosts = async (req, res) => {
+export const getAnswersByID = async (req, res) => {
   try {
-    const posts = await Sequelize.models.post.findAll();
-    console.log("posts", posts);
-    res.send(posts);
+    const { id } = req.params;
+    console.log("id", id);
+    const answers = await Sequelize.models.post.findAll({
+      where: {
+        parentPostId: id,
+      },
+    });
+    res.send(answers);
+    console.log("separate ans", answers);
   } catch (err) {
     console.log(err);
   }
@@ -42,13 +48,14 @@ export const getQuestionById = async (req, res) => {
 // post a question
 export const postQuestion = async (req, res) => {
   try {
-    const { title, content, postType, tags, userId } = req.body;
+    const { title, content, postType, tags, userEmail, parentPostId } = req.body;
     const newPost = await Sequelize.models.post.create({
       postType: postType,
       title: title,
       content: content,
       tags: tags,
-      userEmail: userId,
+      userEmail: userEmail,
+      parentPostId: parentPostId,
     });
     console.log("newPost", newPost);
     res.send(newPost);

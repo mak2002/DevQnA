@@ -5,7 +5,6 @@ import React, {
   useState,
 } from "react";
 import { questionForm } from "../../utils/Data";
-import { putNewQuestions } from "../../utils/dataRequests";
 import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
 import TinyMCE from "../atoms/TinyMCE";

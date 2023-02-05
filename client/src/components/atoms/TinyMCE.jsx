@@ -46,10 +46,11 @@ export default function TinyMCE({ height, setContent }) {
             "help",
             "wordcount",
             "textpattern",
+            "codesample",
           ],
 
           toolbar:
-            "undo redo | blocks | " +
+            "undo redo codesample | blocks " +
             "bold italic forecolor | alignleft aligncenter " +
             "alignright alignjustify | bullist numlist outdent indent | " +
             "removeformat | help",

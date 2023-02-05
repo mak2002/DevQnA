@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import ReactMarkdown from "react-markdown";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Rightbar from "../organisms/Rightbar";
 import TinyMCE from "../atoms/TinyMCE";
 import rehypeRaw from "rehype-raw";
@@ -8,10 +8,15 @@ import Button from "../atoms/Button";
 import { Heading } from "../atoms/Heading";
 import { LoadingAnimation } from "../atoms/LoadingAnimation";
 import { timeAgo } from "../../utils/generalUtils";
-import { BsFillTriangleFill } from "react-icons/bs";
 import { useMutation, useQuery } from "react-query";
-import { fetchSinglePost, putNewPosts, updatePost } from "../../apis/Posts";
+import {
+  fetchAllAnswers,
+  fetchSinglePost,
+  putNewPosts,
+  updatePost,
+} from "../../apis/Posts";
 import Post from "../organisms/Post";
+import firebase from "firebase/compat/app";
 
 var md5 = require("md5");
 
@@ -33,9 +38,16 @@ interface postDetails {
 export default function QuestionsPage() {
   const { id }: any = useParams();
   const [answer, setAnswer] = React.useState<string>("");
-  const [givenAnswers, setGivenAnswers] = React.useState<string[]>([]);
-  const [newAnswers, setNewAnswers] = React.useState<string[]>([]);
   const newPostMutation = useMutation(["newPost"], putNewPosts);
+  const email = firebase.auth().currentUser?.email;
+
+  const { data: answers } = useQuery(["answers", id], async () =>
+    fetchAllAnswers(id)
+  );
+
+  if (answer) {
+    console.log("answers>>", answers);
+  }
 
   const { data: postDetails, isLoading } = useQuery(
     ["singlePost", id],
@@ -57,7 +69,12 @@ export default function QuestionsPage() {
   );
 
   const submitNewAnswer = () => {
-    newPostMutation.mutate({ content: answer, postType: "ANSWER " });
+    newPostMutation.mutate({
+      content: answer,
+      postType: "ANSWER",
+      userEmail: email,
+      parentPostId: id,
+    });
   };
 
   const updateUpvote = () => {
@@ -81,7 +98,21 @@ export default function QuestionsPage() {
   const emailHash = md5(trimedEmail);
   const avatarUrl = `https://www.gravatar.com/avatar/${emailHash}?s=100&d=identicon&r=pg`;
 
-  const showUserAnswers = (): any => {};
+  console.log("ppppp>>", answer);
+
+  const showUserAnswers = (): any => {
+    return answers?.map((answer: any) => {
+      return (
+        <Post
+          postDetails={answer}
+          which={"separate QuestionPage"}
+          updateDownvote={updateDownvote}
+          updateUpvote={updateUpvote}
+          avatarUrl={avatarUrl}
+        />
+      );
+    });
+  };
 
   return (
     <div className="flex min-h-screen w-full bg-neutral-800 text-white ">
@@ -104,12 +135,13 @@ export default function QuestionsPage() {
 
               <Post
                 postDetails={postDetails}
+                which={"QuestionPage"}
                 updateUpvote={updateUpvote}
                 updateDownvote={updateDownvote}
                 avatarUrl={avatarUrl}
               />
 
-              <div>{showUserAnswers()}</div>
+              <div>{answers ? showUserAnswers() : <p>No answers yet</p>}</div>
               <hr />
               <div className="p-4">
                 <h3 className="pb-2 text-left text-white">Your Answer</h3>

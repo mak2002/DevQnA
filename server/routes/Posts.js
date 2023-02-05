@@ -7,16 +7,15 @@ import {
   postQuestion,
   updateQuestion,
   deleteQuestion,
-  getAllPosts,
+  getAnswersByID,
 } from "../controllers/Posts.js";
 
 router.get("/", getQuestions);
-router.get('/allPosts', getAllPosts);
+router.get("/allPosts/:id", getAnswersByID);
 router.get("/:id", getQuestionById);
 router.post("/", postQuestion);
 router.put("/:id", updateQuestion);
 router.delete("/:id", deleteQuestion);
-
 
 // module.exports = router;
 export default router;
