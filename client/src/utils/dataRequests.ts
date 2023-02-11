@@ -24,13 +24,13 @@ export function putNewQuestions(
 }
 
 // put new user
-export function putNewUser(user: string, email: string) {
-  Axios.post("/putNewUser", {
-    username: user,
-    email: email,
-  }).then((res) => {
-    console.log("res", res);
-  });
-}
+// export function putNewUser(user: string, email: string) {
+//   Axios.post("/putNewUser", {
+//     username: user,
+//     email: email,
+//   }).then((res) => {
+//     console.log("res", res);
+//   });
+// }
 
 

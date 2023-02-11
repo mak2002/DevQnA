@@ -9,6 +9,7 @@ import Signup from "./components/templates/Signup";
 import { LayoutRoute } from "../src/components/templates/LayoutRoute";
 import { BaseRoute } from "../src/components/templates/BaseRoute";
 import { QueryClient, QueryClientProvider } from "react-query";
+import SearchQuestions from "./components/templates/SearchQuestions";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,10 @@ function App() {
         <Routes>
           <Route element={<LayoutRoute />}>
             <Route path="/" element={<Home />} />
+            <Route
+              path="/search/:question"
+              element={<SearchQuestions />}
+            />
             <Route path="/questions/:id" element={<QuestionPage />} />
           </Route>
 

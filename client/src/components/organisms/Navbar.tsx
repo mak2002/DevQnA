@@ -3,7 +3,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
 import React, { useState } from "react";
 import LoggedIn from "../molecules/LoggedIn";
-import { Navigate } from "react-router-dom";
+import { Navigate  } from "react-router-dom";
 import { SearchBar } from "../molecules/SearchBar";
 import LogoTitle from "../molecules/LogoTitle";
 import { GradientLine } from "../atoms/GradientLine";
@@ -12,12 +12,12 @@ export default function Navbar() {
   const [user, setUser] = useState<any>();
   const redir = () => {
     <Navigate to="/" />;
-  };
+  };  
 
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-      // User is signed in.
-      var displayName = user.displayName;
+      // User is signed in.   
+      var displayName = user.displayName;  
       var email = user.email;
       var emailVerified = user.emailVerified;
       var photoURL = user.photoURL;
@@ -29,12 +29,12 @@ export default function Navbar() {
     }
   });
 
-  redir();
+  // redir();
 
   return (
     <div className="fixed z-50 w-full">
       <GradientLine />
-      <div className="flex items-center justify-between bg-neutral-900 shadow-2xl">
+      <div className="flex items-center justify-between bg-neutral-800 shadow-2xl">
         <div className="flex w-full items-center px-2">
           <LogoTitle />
           <SearchBar />

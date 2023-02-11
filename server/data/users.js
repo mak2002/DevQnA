@@ -6,7 +6,6 @@ export default  [
         about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed.',
         profileImage: 'https://i.pravatar.cc/150?img=1',
         age: 19,
-     
     },
   
     // User 2

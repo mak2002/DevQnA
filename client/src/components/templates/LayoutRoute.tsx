@@ -2,6 +2,7 @@ import React, { FC, PropsWithChildren } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
 import Leftbar from "../organisms/Leftbar";
 import Navbar from "../organisms/Navbar";
+import Rightbar from "../organisms/Rightbar";
 
 interface Props {
   title?: string;
@@ -12,7 +13,7 @@ interface Props {
 }
 
 export const LayoutRoute: FC<PropsWithChildren<Props>> = ({
-   title,
+  title,
   children,
   ...props
 }) => {
@@ -21,9 +22,10 @@ export const LayoutRoute: FC<PropsWithChildren<Props>> = ({
     <React.Fragment>
       <div className="layout justify-between">
         <Navbar />
-        <div className="content relative top-14 flex ">
+        <div className="content relative top-14 flex">
           <Leftbar />
           <Outlet />
+          <Rightbar />
         </div>
       </div>
     </React.Fragment>

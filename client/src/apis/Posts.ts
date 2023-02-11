@@ -6,7 +6,12 @@ export const fetchAllPosts = async () => {
 };
 
 export const fetchAllAnswers = async (id: string) => {
-  const { data } = await axiosInstance.get(`posts/allPosts/${id}`);
+  const { data } = await axiosInstance.get(`/posts/allPosts/${id}`);
+  return data;
+};
+
+export const fetchPostsByTitle = async (title: string) => {
+  const { data } = await axiosInstance.get(`/search/${title}`);
   return data;
 };
 

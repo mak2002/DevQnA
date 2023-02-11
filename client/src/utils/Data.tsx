@@ -64,7 +64,7 @@ export const questionForm: QuestionForm = [
 export const leftSidebarContent = [
   {
     title: "Questions",
-    link: "/questions",
+    link: "/questions/search/all",
   },
   {
     title: "Tags",

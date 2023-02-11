@@ -8,11 +8,13 @@ import {
   updateQuestion,
   deleteQuestion,
   getAnswersByID,
+  getQuestionsByTitle
 } from "../controllers/Posts.js";
 
 router.get("/", getQuestions);
 router.get("/allPosts/:id", getAnswersByID);
 router.get("/:id", getQuestionById);
+router.get("/search/:id", getQuestionsByTitle);
 router.post("/", postQuestion);
 router.put("/:id", updateQuestion);
 router.delete("/:id", deleteQuestion);

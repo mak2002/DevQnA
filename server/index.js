@@ -5,6 +5,7 @@ import sequelize from "./db.js";
 import users from "./data/users.js";
 import posts from "./data/posts.js";
 import posts_routes from "./routes/Posts.js";
+import users_routes from "./routes/Users.js";
 
 const port = 3000;
 
@@ -39,6 +40,7 @@ app.use(express.json());
 app.use(cors(corsOptions));
 
 app.use("/api/posts", posts_routes);
+app.use("/api/users", users_routes);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -55,7 +57,6 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 
-
 // get all users
 app.get("/getAllUsers", async (req, res) => {
   try {
@@ -66,50 +67,6 @@ app.get("/getAllUsers", async (req, res) => {
   }
 });
 
-// get all posts
-// app.get("/getAllPosts", async (req, res) => {
-//   try {
-//     const posts = await sequelize.models.post.findAll();
-//     res.send(posts);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-
-// // get post by id
-// app.get("/posts/:id", async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const post = await sequelize.models.post.findOne({
-//       where: {
-//         id: id,
-//       },
-//     });
-//     console.log(">><<>>>>>>>", post);
-
-//     res.send(post);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-
-// post a question
-// app.post("/postQuestion", async (req, res) => {
-//   try {
-//     const { title, content, postType, tags, userId } = req.body;
-//     const newPost = await sequelize.models.post.create({
-//       postType: postType,
-//       title: title,
-//       content: content,
-//       tags: tags,
-//       userEmail: userId,
-//     });
-//     res.send(newPost);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-
 // put new user
 app.post("/putNewUser", async (req, res) => {
   try {
@@ -118,26 +75,11 @@ app.post("/putNewUser", async (req, res) => {
       username,
       email,
     });
+    console.log(username, email);
     res.send(newUser);
   } catch (err) {
     console.log(err);
   }
 });
-
-// get all questions
-// app.get("/getAllQuestions", async (req, res) => {
-//   try {
-//     const questions = await sequelize.models.post.findAll({
-//       where: {
-//         postType: "QUESTION",
-//       },
-//     });
-//     res.send(questions);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-
-// include answer routes here
 
 export default sequelize;

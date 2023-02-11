@@ -8,7 +8,7 @@ import Button from "../atoms/Button";
 import { Heading } from "../atoms/Heading";
 import { LoadingAnimation } from "../atoms/LoadingAnimation";
 import { timeAgo } from "../../utils/generalUtils";
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
   fetchAllAnswers,
   fetchSinglePost,
@@ -17,6 +17,7 @@ import {
 } from "../../apis/Posts";
 import Post from "../organisms/Post";
 import firebase from "firebase/compat/app";
+import { BsFillTriangleFill } from "react-icons/bs";
 
 var md5 = require("md5");
 
@@ -38,34 +39,20 @@ interface postDetails {
 export default function QuestionsPage() {
   const { id }: any = useParams();
   const [answer, setAnswer] = React.useState<string>("");
+  const [upvotes, setUpvotes] = React.useState<number>(0);
+  const [downvotes, setDownvotes] = React.useState<number>(0);
+
   const newPostMutation = useMutation(["newPost"], putNewPosts);
   const email = firebase.auth().currentUser?.email;
+  const queryClient = useQueryClient();
 
   const { data: answers } = useQuery(["answers", id], async () =>
     fetchAllAnswers(id)
   );
 
-  if (answer) {
-    console.log("answers>>", answers);
-  }
-
   const { data: postDetails, isLoading } = useQuery(
     ["singlePost", id],
     async () => fetchSinglePost(id)
-  );
-
-  const newUpvotes: any = postDetails?.upvotes + 1;
-  const newDownvotes: any = postDetails?.downvotes - 1;
-
-  let updatedUpvote = { ...postDetails, upvotes: newUpvotes };
-  let updatedDownvote = { ...postDetails, downvotes: newDownvotes };
-
-  const mutationUpvote = useMutation(["updatePostUpvote"], () =>
-    updatePost(id, updatedUpvote)
-  );
-
-  const mutationDownvote = useMutation(["updatePostDownvote"], () =>
-    updatePost(id, updatedDownvote)
   );
 
   const submitNewAnswer = () => {
@@ -78,27 +65,17 @@ export default function QuestionsPage() {
   };
 
   const updateUpvote = () => {
-    try {
-      mutationUpvote.mutate(updatedUpvote);
-    } catch (error) {
-      console.error(error);
-    }
+    setUpvotes(upvotes + 1);
   };
 
   const updateDownvote = () => {
-    try {
-      mutationDownvote.mutate(updatedDownvote);
-    } catch (error) {
-      console.error(error);
-    }
+    setDownvotes(downvotes - 1);
   };
 
   const trimedEmail = postDetails?.userEmail?.trim().toLowerCase() ?? "";
 
   const emailHash = md5(trimedEmail);
   const avatarUrl = `https://www.gravatar.com/avatar/${emailHash}?s=100&d=identicon&r=pg`;
-
-  console.log("ppppp>>", answer);
 
   const showUserAnswers = (): any => {
     return answers?.map((answer: any) => {
@@ -116,7 +93,7 @@ export default function QuestionsPage() {
 
   return (
     <div className="flex min-h-screen w-full bg-neutral-800 text-white ">
-      <div className=" w-full  sm:w-8/12">
+      <div className="w-full sm:w-10/12">
         <div className="flex justify-end p-4"></div>
         <div className="">
           {isLoading ? (
@@ -139,6 +116,7 @@ export default function QuestionsPage() {
                 updateUpvote={updateUpvote}
                 updateDownvote={updateDownvote}
                 avatarUrl={avatarUrl}
+                type="QUESTION"
               />
 
               <div>{answers ? showUserAnswers() : <p>No answers yet</p>}</div>
@@ -152,15 +130,17 @@ export default function QuestionsPage() {
           )}
         </div>
 
-        <Button
-          className="relative right-20 cursor-pointer rounded-sm bg-blue-300 py-2 px-2 text-left text-white sm:h-10"
-          onClick={submitNewAnswer}
-        >
-          Post your answer
-        </Button>
+        {!isLoading && (
+          <Button
+            className="relative left-8 cursor-pointer rounded-sm bg-blue-300 py-2 px-2 text-left text-white sm:h-10"
+            onClick={submitNewAnswer}
+          >
+            Post your answer
+          </Button>
+        )}
       </div>
 
-      <Rightbar />
+      {/* <Rightbar /> */}
     </div>
   );
 }

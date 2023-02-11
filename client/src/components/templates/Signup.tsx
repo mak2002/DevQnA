@@ -5,11 +5,14 @@ import stack_overflow_icon from "../../stack_overflow_icon.png";
 import { LinkButton } from "../atoms/LinkButton";
 import Input from "../atoms/Input";
 import { Button } from "react-bootstrap";
+import { putNewUser } from "../../apis/Users";
 
 const Signup = () => {
   const [loginEmail, setLoginEmail] = useState("");
+
   const [loginPassword, setLoginPassword] = useState("");
 
+  console.log("loginEmail>>>>", loginEmail);
   return (
     <div className="flex h-screen flex-col items-center justify-center bg-neutral-800">
       <LinkButton to="/" className="">

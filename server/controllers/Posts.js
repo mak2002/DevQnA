@@ -14,6 +14,25 @@ export const getQuestions = async (req, res) => {
   }
 };
 
+export const getQuestionsByTitle = async (req, res) => {
+  try {
+    const { searchTitle } = req.params;
+    const questions = await Sequelize.models.post.findAll({
+      where: {
+        postType: "QUESTION",
+        title: Sequelize.where(
+          Sequelize.fn("LOWER", Sequelize.col("title")),
+          "LIKE",
+          "%" + searchTitle.toLowerCase() + "%"
+        ),
+      },
+    });
+    res.send(questions);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const getAnswersByID = async (req, res) => {
   try {
     const { id } = req.params;
@@ -48,7 +67,8 @@ export const getQuestionById = async (req, res) => {
 // post a question
 export const postQuestion = async (req, res) => {
   try {
-    const { title, content, postType, tags, userEmail, parentPostId } = req.body;
+    const { title, content, postType, tags, userEmail, parentPostId } =
+      req.body;
     const newPost = await Sequelize.models.post.create({
       postType: postType,
       title: title,
