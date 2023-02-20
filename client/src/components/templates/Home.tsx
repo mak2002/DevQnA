@@ -13,24 +13,24 @@ import Pagination from "../molecules/Pagination";
 export default function Home() {
   const questions = useQuery("posts", fetchAllPosts);
   const [sortOrder, setSortOrder] = React.useState("");
-  console.log("sortOrder>>>>", sortOrder);
 
   return (
     <div className="flex w-full flex-col border-l-2 border-neutral-600 bg-neutral-800">
-      <TitleAndAskQuestion title="Ask Questions" />
+      <TitleAndAskQuestion title="Ask Questions" /> 
 
       <div className="relative mx-4 mt-6 mb-4 flex justify-end">
         <SortingButtons setSortOrder={setSortOrder} className="border-collapse border border-gray-400 p-3 text-white transition-all duration-100 hover:bg-slate-600" />
       </div>
 
       <AllQuestions
+      sortOrder={sortOrder}
         questions={questions.data}
         isLoading={questions.isLoading}
       />
 
-      <div className="py-8">
-        {/* <Pagination /> */}
-      </div>
+      {/* <div className="py-8">
+        <Pagination />
+      </div> */}
     </div>
   );
 }

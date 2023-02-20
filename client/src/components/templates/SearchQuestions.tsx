@@ -7,7 +7,6 @@ import AllQuestions from "../organisms/Questions";
 
 export default function SearchQuestions() {
   const { id }: any = useParams();
-  console.log("id>>>>>", id);
 
   const questions = useQuery(["posts", id], async () =>
     fetchPostsByTitle(id)

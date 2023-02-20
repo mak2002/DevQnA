@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../atoms/Button";
-const sortingButtons: string[] = ["Week", "Month", "Year", "Hot"];
+const sortingButtons: string[] = ["Latest", "Oldest", "Hot"];
 
 const renderSortingButtons = (className: string, setSortOrder: Function) => {
   

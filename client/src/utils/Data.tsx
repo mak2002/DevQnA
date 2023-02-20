@@ -70,10 +70,10 @@ export const leftSidebarContent = [
     title: "Tags",
     link: "/tags",
   },
-  {
-    title: "Users",
-    link: "/users",
-  },
+  // {
+  //   title: "Users",
+  //   link: "/users",
+  // },
 ];
 
 export const tagsInfo = [
