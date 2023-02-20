@@ -43,8 +43,10 @@ DevQnA is a clone of the popular programming Q&A website Stack Overflow, built u
 git clone https://github.com/mak2002/stack-overflow-clone.git
 
 2. Install the dependencies:
-cd stack-overflow-clone/client
-npm install
+        
+        cd stack-overflow-clone/client
+        
+        npm install
 
         cd ..
 
