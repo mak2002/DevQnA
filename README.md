@@ -50,7 +50,7 @@ git clone https://github.com/mak2002/stack-overflow-clone.git
 
         cd ..
 
-        cd stack-overflow-clone/client
+        cd stack-overflow-clone/server
         
         npm install
 
