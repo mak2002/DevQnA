@@ -1,46 +1,69 @@
-# Getting Started with Create React App
+# Stack Overflow Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DevQnA is a clone of the popular programming Q&A website Stack Overflow, built using TypeScript, React, and Node.js.
 
-## Available Scripts
+# Pics
+<!-- add pics here -->
 
-In the project directory, you can run:
+### Login Page
+![Login Page](/imgs/login.png)
 
-### `npm start`
+### Home Page
+![Home Page](/imgs/home.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Questions Page
+![Questions Page](/imgs/questions.png)
 
-### `npm test`
+### Search Page
+![Search Page](/imgs/search.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Tags Page
+![Tags Page](/imgs/tags.png)
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Ask questions and post answers
+- Upvote and downvote questions and answers
+- Sort questions by Latest, Oldest and Upvotes
+- Search for questions by keywords
+- Explore Tags
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies Used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React(TypeScript)
+- TailwindCSS
+- Node.js
+- Express.js
+- PostgreSQL
+- Sequelize
+## Installation
 
-### `npm run eject`
+1. Clone the repository:
+git clone https://github.com/mak2002/stack-overflow-clone.git
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. Install the dependencies:
+cd stack-overflow-clone/client
+npm install
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+        cd ..
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+        cd stack-overflow-clone/client
+        
+        npm install
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Set up the environment variables:
+cp .env.example .env
 
-## Learn More
+Edit the .env file and replace the values with your own.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Start the server:
+npm start
+
+2. Open the client:
+cd client
+npm start
+
+3. Open your browser and go to http://localhost:3000/
