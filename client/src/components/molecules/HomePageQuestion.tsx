@@ -4,6 +4,8 @@ import { getAvatarUrl } from "../../utils/User";
 import { LinkButton } from "../atoms/LinkButton";
 
 export default function HomePageQuestion(question: any) {
+
+  const email = question.userEmail;
   return (
     <div>
       <div className="flex flex-col border-b-2 border-gray-500 bg-gray-800 py-6">
@@ -23,11 +25,11 @@ export default function HomePageQuestion(question: any) {
         <div className="flex items-center justify-end gap-2">
           <img
             className="h-10 w-10 rounded-md"
-            src={getAvatarUrl(question.userEmail)}
+            src={getAvatarUrl(email)}
             alt="user profile"
           />
           <a href="" className="text-blue-700">
-            {question.userEmail.slice(0, 5)}
+            {email?.slice(0, 5) || "user"}
             &nbsp;
           </a>
 

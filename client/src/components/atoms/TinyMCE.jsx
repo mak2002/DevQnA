@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
+// import app.css
 // import 'tinymce/plugins/markdown';
 
 export default function TinyMCE({ height, setContent }) {
@@ -19,7 +20,7 @@ export default function TinyMCE({ height, setContent }) {
   };
 
   return (
-    <div className="bg-zinc-700">
+    <div className="py-4">
       <Editor
         tinymceScriptSrc={process.env.PUBLIC_URL + "/tinymce/tinymce.min.js"}
         onInit={(evt, editor) => (editorRef.current = editor)}

@@ -11,7 +11,7 @@ export default function LogoTitle() {
       <LinkButton to="/" className="flex items-center">
         <img
           src={stack_overflow_icon}
-          className="fill-white"
+          className="fill-white text-white grayscale"
           alt="StackOverflow Icon"
           width={50}
         />

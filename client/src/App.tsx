@@ -10,20 +10,19 @@ import { LayoutRoute } from "../src/components/templates/LayoutRoute";
 import { BaseRoute } from "../src/components/templates/BaseRoute";
 import { QueryClient, QueryClientProvider } from "react-query";
 import SearchQuestions from "./components/templates/SearchQuestions";
+import Tags from "./components/templates/Tags";
+import { LeftbarRoute } from "./components/templates/LeftbarRoute";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App ">
+    <div className="App">
       <QueryClientProvider client={queryClient}>
         <Routes>
           <Route element={<LayoutRoute />}>
             <Route path="/" element={<Home />} />
-            <Route
-              path="/search/:question"
-              element={<SearchQuestions />}
-            />
+            <Route path="/search/:id" element={<SearchQuestions />} />
             <Route path="/questions/:id" element={<QuestionPage />} />
           </Route>
 
@@ -32,6 +31,11 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/askquestion" element={<AskQuestion />} />
           </Route>
+
+          <Route element={<LeftbarRoute />}>
+            <Route path="/tags" element={<Tags />} />
+          </Route>
+           
         </Routes>
       </QueryClientProvider>
     </div>

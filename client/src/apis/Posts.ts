@@ -11,7 +11,7 @@ export const fetchAllAnswers = async (id: string) => {
 };
 
 export const fetchPostsByTitle = async (title: string) => {
-  const { data } = await axiosInstance.get(`/search/${title}`);
+  const { data } = await axiosInstance.get(`/posts/search/${title}`);
   return data;
 };
 

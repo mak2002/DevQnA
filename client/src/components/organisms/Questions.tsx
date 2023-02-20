@@ -38,11 +38,11 @@ function renderQuestions(questions: any, isLoading: boolean): any {
           <div className="flex items-center justify-end gap-2">
             <img
               className="h-10 w-10 rounded-md"
-              src={getAvatarUrl(question.userEmail)}
+              src={getAvatarUrl(question.userEmail || "user")}
               alt="user profile"
             />
             <a href="" className="text-blue-700">
-              {question.userEmail.slice(0, 5)}
+              {question.userEmail?.slice(0, 5) || "user"}
               &nbsp;
             </a>
 

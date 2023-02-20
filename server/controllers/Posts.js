@@ -16,14 +16,16 @@ export const getQuestions = async (req, res) => {
 
 export const getQuestionsByTitle = async (req, res) => {
   try {
-    const { searchTitle } = req.params;
+    console.log("req.body", req.body, req.params);
+    const { id: title } = req.params;
+    console.log("id", title);
     const questions = await Sequelize.models.post.findAll({
       where: {
         postType: "QUESTION",
         title: Sequelize.where(
           Sequelize.fn("LOWER", Sequelize.col("title")),
           "LIKE",
-          "%" + searchTitle.toLowerCase() + "%"
+          "%" + title.toLowerCase() + "%"
         ),
       },
     });

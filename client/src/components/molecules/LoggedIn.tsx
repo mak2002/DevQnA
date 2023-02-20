@@ -11,7 +11,7 @@ export default function LoggedIn(props: { user: any; setUser: Function }) {
   return (
     <div className="my-4 mr-4 flex w-full gap-10 sm:relative sm:w-2/12">
       <img
-        className="h-10 w-10 rounded-md"
+        className="h-8 w-8 rounded-md"
         src={avatarUrl}
         alt="user profile"
       />
@@ -23,7 +23,7 @@ export default function LoggedIn(props: { user: any; setUser: Function }) {
           props.setUser(null);
         }}
       >
-        <MdLogout size={30} />
+        <MdLogout size={42} />
       </Button>
     </div>
   );

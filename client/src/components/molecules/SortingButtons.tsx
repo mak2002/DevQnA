@@ -1,17 +1,29 @@
 import React from "react";
 import Button from "../atoms/Button";
-const sortingButtons: string[] = ["Bountied", "Hot", "Week", "Month"];
+const sortingButtons: string[] = ["Week", "Month", "Year", "Hot"];
 
-const renderSortingButtons = (className: string) => {
+const renderSortingButtons = (className: string, setSortOrder: Function) => {
+  
+  const handleOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setSortOrder(e.currentTarget.textContent);
+  };
+
   return sortingButtons.map((buttonName) => {
     return (
-      <Button key={buttonName} className={className}>
+      <Button key={buttonName} onClick={handleOnClick} className={className}>
         {buttonName}
       </Button>
     );
   });
 };
 
-export default function SortingButtons(props: { className: string }) {
-  return <div className="">{renderSortingButtons(props.className)}</div>;
+export default function SortingButtons(props: {
+  className: string;
+  setSortOrder: Function;
+}) {
+  return (
+    <div className="">
+      {renderSortingButtons(props.className, props.setSortOrder)}
+    </div>
+  );
 }

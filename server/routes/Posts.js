@@ -13,8 +13,8 @@ import {
 
 router.get("/", getQuestions);
 router.get("/allPosts/:id", getAnswersByID);
-router.get("/:id", getQuestionById);
 router.get("/search/:id", getQuestionsByTitle);
+router.get("/:id", getQuestionById);
 router.post("/", postQuestion);
 router.put("/:id", updateQuestion);
 router.delete("/:id", deleteQuestion);

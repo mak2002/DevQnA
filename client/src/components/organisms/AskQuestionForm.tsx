@@ -53,7 +53,7 @@ export default function AskQuestionForm({
       {FormFields(handleInputChange, setContent)}
       <Button
         type="submit"
-        className="rounded bg-blue-500 p-2 text-white"
+        className="rounded bg-blue-500 p-2 ml-5 text-white"
         text="Submit"
         onClick={handleSubmit}
       />

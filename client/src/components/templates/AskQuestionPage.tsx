@@ -44,8 +44,9 @@ export default function AskQuestion() {
 
   return (
     <React.Fragment>
-      <div className="bg-stone-700 pl-5">
+      <div className="bg-stone-700 pl-5 relative top-16">
         <Heading
+        type="h3"
           text="Ask a public question"
           className="py-5 pl-5 text-left font-bold text-white"
         />

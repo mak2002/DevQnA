@@ -2,7 +2,6 @@ import React, { FC, PropsWithChildren } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
 import Leftbar from "../organisms/Leftbar";
 import Navbar from "../organisms/Navbar";
-import Rightbar from "../organisms/Rightbar";
 
 interface Props {
   title?: string;
@@ -12,7 +11,7 @@ interface Props {
   exact?: boolean;
 }
 
-export const LayoutRoute: FC<PropsWithChildren<Props>> = ({
+export const LeftbarRoute: FC<PropsWithChildren<Props>> = ({
   title,
   children,
   ...props
@@ -22,10 +21,9 @@ export const LayoutRoute: FC<PropsWithChildren<Props>> = ({
     <React.Fragment>
       <div className="layout justify-between">
         <Navbar />
-        <div className="content relative top-14 flex bg-neutral-800">
+        <div className="content relative top-14 flex">
           <Leftbar />
           <Outlet />
-          {/* <Rightbar /> */}
         </div>
       </div>
     </React.Fragment>

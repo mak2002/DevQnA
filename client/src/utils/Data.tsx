@@ -64,7 +64,7 @@ export const questionForm: QuestionForm = [
 export const leftSidebarContent = [
   {
     title: "Questions",
-    link: "/questions/search/all",
+    link: "/search/lorem",
   },
   {
     title: "Tags",
@@ -74,8 +74,31 @@ export const leftSidebarContent = [
     title: "Users",
     link: "/users",
   },
+];
+
+export const tagsInfo = [
   {
-    title: "Companies",
-    link: "/companies",
+    title: "JavaScript",
+    description:
+      "JavaScript is a high-level, interpreted programming language. It is a language which is also characterized as dynamic, weakly typed, prototype-based and multi-paradigm.",
+    link: "/tags/javascript",
+  },
+  {
+    title: "React",
+    description:
+      "React is an open-source, front end, JavaScript library for building user interfaces or UI components. It is maintained by Facebook and a community of individual developers and companies.",
+    link: "/tags/react",
+  },
+  {
+    title: "Node.js",
+    description:
+      "Node.js is an open-source, cross-platform, back-end, JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.",
+    link: "/tags/nodejs",
+  },
+  {
+    title: "HTML",
+    description:
+      "HTML is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets and scripting languages such as JavaScript.",
+    link: "/tags/html",
   },
 ];
